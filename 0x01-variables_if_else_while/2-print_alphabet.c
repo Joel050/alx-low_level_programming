@@ -2,8 +2,8 @@
 
 /**
  *main- writing program that prints alphabet in lower case
- *Return:0 
- */
+ *Return:0 if error return zero 
+*/
 int main(void)
 {
 	char i;

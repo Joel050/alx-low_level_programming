@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
- * *main-program start.
- * *Return:0 if no error, error should be non zero if any.
- * */
+ *main-program start.
+ *Return:0 if no error, error should be non zero if any.
+ */
 int main(void)
 {
 	char i;
