@@ -1,16 +1,15 @@
-#include <stdio.h>
 #include "function_pointers.h"
 
 /**
- * print_name_as_is - prints a name as is
- * @name: name of the person
+ * print_name - a function that prints a name.
+ * @name: the name given
+ * @f: function of name
  *
- * Return: Nothing.
+ * Rteurn: void
  */
-
 void print_name(char *name, void (*f)(char *))
 {
-	if(name != NULL && f != NULL)
-	
+	if (name != NULL && f != NULL)
+
 		f(name);
 }
