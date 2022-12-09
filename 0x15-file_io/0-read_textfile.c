@@ -2,31 +2,35 @@
 
 /**
  * read_textfile - reads a text file and prints the letters
- * @count: count.
+ * @filename: filename.
  * @letters: numbers of letters printed.
  *
  * Return: numbers of letters printed. It fails, returns 0.
  */
+ssize_t read_textfile(const char *filename, size_t letters)
+{
+	int fd;
+	ssize_t nrd, nwr;
+	char *buf;
 
-ssize_t read_textfile(const char *filename, size_t letters) {
-  // Open the file for reading
-  FILE *file = fopen(filename, "r");
+	if (!filename)
+		return (0);
 
-  // Make sure the file was opened successfully
-  if (file == NULL) {
-    return 0;
-  }
+	fd = open(filename, O_RDONLY);
 
-  // Read and print the file contents up to the specified number of letters
-  char ch;
-  size_t count = 0;
-  while ((ch = fgetc(file)) != EOF && count < letters) {
-    putchar(ch);
-    count++;
-  }
+	if (fd == -1)
+		return (0);
 
-  // Close the file and return the number of letters read
-  fclose(file);
-  return count;
+	buf = malloc(sizeof(char) * (letters));
+	if (!buf)
+		return (0);
+
+	nrd = read(fd, buf, letters);
+	nwr = write(STDOUT_FILENO, buf, nrd);
+
+	close(fd);
+
+	free(buf);
+
+	return (nwr);
 }
-
